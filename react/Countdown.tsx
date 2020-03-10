@@ -1,5 +1,6 @@
 // Dependencies
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
+import { useCssHandles } from 'vtex.css-handles'
 
 // Typings
 import { TimeSplit } from './typings/global'
@@ -13,6 +14,9 @@ interface CountdownProps {
 
 const DEFAULT_TARGET_DATE = (new Date('2020-03-11')).toISOString()
 
+// CSS HANDLES
+const CSS_HANDLES = ['countdown']
+
 const Countdown: StorefrontFunctionComponent<CountdownProps> = ({ targetDate }) => {
   const [timeRemaining, setTime] = useState<TimeSplit>({
     hours: '00',
@@ -20,13 +24,17 @@ const Countdown: StorefrontFunctionComponent<CountdownProps> = ({ targetDate }) 
     seconds: '00'
   });
 
+  const handles = useCssHandles(CSS_HANDLES)
+
   tick(targetDate, setTime);
 
-  return (<Fragment>
-    <h1>
-      {`${timeRemaining.hours}:${timeRemaining.minutes}:${timeRemaining.seconds}`}
-    </h1>
-  </Fragment>)
+  return (
+    <div className={`${handles.countdown} t-heading-2 fw3 w-100 c-muted-1 db tc`}>
+      <h1>
+        {`${timeRemaining.hours}:${timeRemaining.minutes}:${timeRemaining.seconds}`}
+      </h1>
+    </div>
+  )
 }
 
 Countdown.schema = {
