@@ -1,3 +1,4 @@
+import { gif } from './resolvers/giphy';
 import { helloWorld } from './resolvers/helloWorld';
 import { ClientsConfig, LRUCache, Service, ServiceContext } from '@vtex/api'
 
@@ -31,7 +32,8 @@ export default new Service<Clients, {}>({
   graphql: {
     resolvers: {
       Query: {
-        helloWorld
+        helloWorld,
+        gif
       },
     },
   },
