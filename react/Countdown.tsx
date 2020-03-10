@@ -3,7 +3,9 @@ import React, { Fragment } from 'react'
 interface CountdownProps {}
 
 const Countdown: StorefrontFunctionComponent<CountdownProps> = ({}) => {
-  return <Fragment></Fragment>
+  return (<Fragment>
+    <h1>Teste Countdown</h1>
+  </Fragment>)
 }
 
 Countdown.schema = {
